@@ -22,14 +22,16 @@ const createScene = function () {
 //  CAMERA
     const scene = new BABYLON.Scene(engine);
     const camera = new BABYLON.FreeCamera("camera1", 
-        new BABYLON.Vector3(0, -10, 0), scene);
+        new BABYLON.Vector3(0, 10, 0), scene);
     camera.setTarget(BABYLON.Vector3.Zero());
-    //camera.rotation.y = Math.PI / 2;
+    camera.rotation.y = 0;
+    console.log("Camera rotation: " + camera.rotation);
+    //camera.rotation = new BABYLON.Vector3(0, 0, 0);
     //camera.attachControl(canvas, true);   //Comment this to disable camera control
 
 //  LIGHTS    
     const light = new BABYLON.HemisphericLight("light", 
-        new BABYLON.Vector3(0, -1, 0), scene);
+        new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 0.7;
 
 //  MESHES
@@ -40,12 +42,12 @@ const createScene = function () {
     let left_paddle = BABYLON.MeshBuilder.CreateBox("box", 
         {size: paddleSize, height: paddleHeight, width: paddleWidth}, scene);
 
-    left_paddle.position = new BABYLON.Vector3(6, 0, 0);
+    left_paddle.position = new BABYLON.Vector3(-6, 0, 0);
     left_paddle.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
 
     let right_paddle = BABYLON.MeshBuilder.CreateBox("box",
         {size: paddleSize, height: paddleHeight, width: paddleWidth}, scene);
-    right_paddle.position = new BABYLON.Vector3(-6, 0, 0);
+    right_paddle.position = new BABYLON.Vector3(6, 0, 0);
     right_paddle.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
 
     let ball = BABYLON.MeshBuilder.CreateSphere("ball",
