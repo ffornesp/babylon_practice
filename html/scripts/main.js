@@ -22,14 +22,14 @@ const createScene = function () {
 //  CAMERA
     const scene = new BABYLON.Scene(engine);
     const camera = new BABYLON.FreeCamera("camera1", 
-        new BABYLON.Vector3(0, 10, 0), scene);
+        new BABYLON.Vector3(0, -10, 0), scene);
     camera.setTarget(BABYLON.Vector3.Zero());
     //camera.rotation.y = Math.PI / 2;
     //camera.attachControl(canvas, true);   //Comment this to disable camera control
 
 //  LIGHTS    
     const light = new BABYLON.HemisphericLight("light", 
-        new BABYLON.Vector3(0, 1, 0), scene);
+        new BABYLON.Vector3(0, -1, 0), scene);
     light.intensity = 0.7;
 
 //  MESHES
@@ -94,8 +94,8 @@ const createScene = function () {
     });
 
     scene.registerBeforeRender(() => {
-        let leftPaddleMovement = leftPaddleDown - leftPaddleUp;
-        let rightPaddleMovement = rightPaddleDown - rightPaddleUp;
+        let leftPaddleMovement = leftPaddleUp - leftPaddleDown;
+        let rightPaddleMovement = rightPaddleUp - rightPaddleDown;
 
         left_paddle.position.z += leftPaddleMovement * paddleSpeed;
         right_paddle.position.z += rightPaddleMovement * paddleSpeed;
